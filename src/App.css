@@ -1,0 +1,59 @@
+
+.banner-card{
+    width: 100vw;
+    margin-top: 2vh ;
+    height: 70vh;
+    position: relative;
+    margin-bottom: 3vh;
+}
+.banner-img{
+    width: 100vw;
+    height: 70vh;
+}
+.banner-title{
+    /* parent compenenet position should be relative and child should be
+     absolute, then we can move position of child using top, left, etc in the area of parent space*/
+    position: absolute;         
+    top: 45vh;
+    font-size: 50px;
+    color: white;
+    left : 5vw;
+}
+.banner-text{
+    position: absolute;         
+    top: 55vh;
+    font-size: 20px;
+    color: white;
+    left : 5vw;
+}
+.movies-list{
+    display: flex;
+    justify-content: center;
+    /* flex-wrap is used to arrange space taken by them(by their limit) */
+    flex-wrap: wrap;        
+    padding: 1rem;
+}
+
+.movie-card{
+    margin: 1rem;
+    width: 20vw;
+    position: relative;
+}
+.movie-title{
+    position: absolute;
+    top:  1rem;
+    left: 1rem;
+    color: white;
+}
+.movie-button{
+    position: absolute;
+    bottom : 2rem;
+    left : 5rem;
+}
+
+.genre-selector{
+    padding: 3rem;
+}
+.favorites-table{
+    padding: 3rem;
+}
