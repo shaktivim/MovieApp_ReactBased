@@ -15,7 +15,8 @@ export class MovieList extends Component {
       hover : '',
       movies : [],
       parr : [1],
-      currPage : 1
+      currPage : 1,
+      favorites :[]
 
     }
   }
@@ -68,14 +69,29 @@ export class MovieList extends Component {
       }, this.changeMovies)
     }
   }
+
   handleFavorites =(movieObj) => {
-    let data = JSON.parse(localStorage.getItem('favMovies') || [])
-    
-    
+    let data = JSON.parse(localStorage.getItem('favMovies') || '[]')
+    // making add and remove features from favorite array
+    if(this.state.favorites.includes(movieObj.id)){
+      data = data.filter((movie)=>movie.id != movieObj.id)
+    }else{
+      data.push(movieObj)
+    }
+    localStorage.setItem('favMovies', JSON.stringify(data))
+    this.handleFavoriteState() 
+  }
+  handleFavoriteState = () => {
+    let data = JSON.parse(localStorage.getItem('favMovies') || '[]')
+    let temp = data.map((movie) => movie.id)
+    this.setState({
+      favorites : [...temp]
+    })
   }
 
   render() {
     // console.log('In render')
+    // console.log(this.state.favorites)
     // we can write js in render function
     // let movies = movies.results
     // console.log(movieData)
@@ -93,7 +109,11 @@ export class MovieList extends Component {
                       <img src={`https://image.tmdb.org/t/p/original${movieEle.poster_path}`} className="card-img-top movie-img" alt="..."/>
                       <h5 className="card-title movie-title">{movieEle.original_title}</h5>
                       {/* if condition is true it will display element after && */}
-                      {this.state.hover == movieEle.id && <a onClick={()=>this.handleFavorites(movieEle)} className="btn btn-primary movie-button">Add to Favorites</a>}
+                      {this.state.hover == movieEle.id && <a onClick={()=>this.handleFavorites(movieEle)}
+                         className="btn btn-primary movie-button">
+                          {this.state.favorites.includes(movieEle.id) ? 'Remove from favorites' : 'Add to Favorites'}
+                        </a>
+                      }
                   </div>
                 ))}
             </div>
