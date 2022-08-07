@@ -95,8 +95,8 @@ export class Favorites extends Component {
           <div className='col-3'>
             <ul className="list-group genre-selector">
               {this.state.genres.map((genre) => this.state.currGenre == genre ? 
-              (<li className="list-group-item" style={{background:'#3f51b5', color:'white', fontWeight:'bold'}} >{genre}</li>) : 
-              (<li onClick={() => this.changeGenre(genre)} className="list-group-item" style={{background:'white', color:'#3f51b5', fontWeight:'bold'}} >{genre}</li>)
+              (<li className="list-group-item" style={{background:'#3f51b5', color:'white', fontWeight:'bold', cursor:'pointer'}} >{genre}</li>) : 
+              (<li onClick={() => this.changeGenre(genre)} className="list-group-item" style={{background:'white', color:'#3f51b5', fontWeight:'bold', cursor:'pointer'}} >{genre}</li>)
               )}
             </ul>
           </div>
@@ -114,8 +114,8 @@ export class Favorites extends Component {
                     <th scope="col">Title</th>
                     <th></th>
                     <th scope="col">Genre</th>
-                    <th scope="col"><i class="fa-solid fa-sort-up" onClick={()=>this.sortByPopularity(1)}></i>Popularity<i class="fa-solid fa-sort-down" onClick={()=>this.sortByPopularity(-1)}></i></th>
-                    <th scope="col"><i class="fa-solid fa-sort-up" onClick={()=>this.sortByRating(1)}></i>Ratings<i class="fa-solid fa-sort-down" onClick={()=>this.sortByRating(-1)}></i></th>
+                    <th scope="col"><i className="fa-solid fa-sort-up" onClick={()=>this.sortByPopularity(1)}></i>Popularity<i className="fa-solid fa-sort-down" onClick={()=>this.sortByPopularity(-1)}></i></th>
+                    <th scope="col"><i className="fa-solid fa-sort-up" onClick={()=>this.sortByRating(1)}></i>Ratings<i className="fa-solid fa-sort-down" onClick={()=>this.sortByRating(-1)}></i></th>
                     <th></th>
                   </tr>
                 </thead>
@@ -123,14 +123,14 @@ export class Favorites extends Component {
                   {filterArr.map((movie) => (
                     <tr>
                       <td>
-                        <img style={{width:'6rem'}} src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} />
+                        <img style={{width:'6rem'}} src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt=''/>
                       </td>
                       <th scope="row">{movie.title}</th>
                       {/* <td>genre</td> */}
                       <td>{genreids[movie.genre_ids[0]]}</td>
                       <td>{movie.popularity}</td>
                       <td>{movie.vote_average}</td>
-                      <td><button onClick={()=>this.handleFavMovieDlt(movie.id)} type="button" class="btn btn-danger">Danger</button></td>
+                      <td><button onClick={()=>this.handleFavMovieDlt(movie.id)} type="button" className="btn btn-danger">Remove</button></td>
                     </tr>
                   ))}
                 </tbody>

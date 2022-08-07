@@ -121,13 +121,13 @@ export class MovieList extends Component {
             <div style={{display:'flex', justifyContent : 'center'}}>
               <nav aria-label="...">
                 <ul className="pagination">
-                  <li className="page-item">
+                  <li className="page-item" style={{cursor:'pointer'}}>
                     <a className="page-link" onClick={this.handlePrev}>Previous</a>
                   </li>
                   {this.state.parr.map((value)=>(
-                    <li className="page-item"><a onClick={() => this.handlePageClick(value)} className="page-link">{value}</a></li>
+                    <li className="page-item" style={{cursor:'pointer'}}><a onClick={() => this.handlePageClick(value)} className="page-link">{value}</a></li>
                   ))}
-                  <li className="page-item">
+                  <li className="page-item"style={{cursor:'pointer'}}>
                     <a className="page-link" onClick={this.handleNext} >Next</a>
                   </li>
                 </ul>
